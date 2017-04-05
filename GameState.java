@@ -1,6 +1,8 @@
 
 package zeitz_borkv3;
 
+
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
@@ -163,5 +165,59 @@ public class GameState {
     Dungeon getDungeon() {
         return dungeon;
     }
+    
+ /**
+ * earthquake().
+ * This method is called to initiate the effects of the earthquake to the game state.
+ * There are no parameters and returns void. The method is called when the trigger
+ * number equals the movement number. 
+ * @author Meredith
+ * 
+ */
+    void earthquake(){
+        
+    }
+    
+ /**
+ * getNumMoves().
+ * This method is a getter for the numMoves instance variable. It will be used 
+ * to see if the random trigger number and the movement number are equal which 
+ * sets off an earthquake when they are. 
+ * @author Meredith
+ * @return int   This returns the instance variable numMoves 
+ * 
+ */
+    int getNumMoves(){
+        
+    }
+    
+  /**
+ * getTriggerNumber().
+ * This method is a getter for the triggerNumber instance variable. It will be used 
+ * to see if the random trigger number and the movement number are equal which 
+ * sets off an earthquake when they are. 
+ * @author Meredith
+ * @return int   This returns the instance variable triggerNumber
+ * 
+ */
+    int getTriggerNumber(){
+        
+    }
+    
+ /**
+ * triggerEarthquake().
+ *  This method is a boolean that will be true if an earthquake has occurred and 
+ * false if no earthquake has been triggered. 
+ * @author Meredith
+ * @return boolean   This returns the boolean of whether or not an earthquake has
+ *                      been triggered. It is false if no earthquake has occurred. 
+ * @param int       The integer number triggerNumber is the only parameter. 
+ *                      It will be equal to the instance variable also named triggerNumber.
+ * 
+ */
+    boolean triggerEarthquake(int triggerNumber){
+        
+    }
 
 }
+
