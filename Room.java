@@ -1,6 +1,8 @@
 
 package zeitz_borkv3;
 
+
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
@@ -80,6 +82,30 @@ public class Room {
         }
     }
 
+    //ANOTHER ROOM CONSTRUCTOR! GROUP BORK CONSTRUCTOR 
+ /**
+ * Room(Scanner s, Dungeon d, boolean initState, boolean isHidden, boolean isLocked).
+ * This is the new room constructor that accounts for locked and hidden rooms. 
+ * @author Meredith
+ * @param d The dungeon object, necessary to retrieve Item objects.
+    @param initState should items listed for this room be added to it?
+    @param s  The scanner used to read through the provided file looking for 
+    room information. 
+    @param isHidden is the room the secret room or a room with normal visibility?
+    @param isLocked is the room locked and in need of a riddle to open it?
+    @throws NoRoomException The reader object is not positioned at the
+    start of a room entry. A side effect of this is the reader's cursor
+    is now positioned one line past where it was.
+    @throws IllegalDungeonFormatException A structural problem with the
+    dungeon file itself, detected when trying to read this room.
+ * 
+ */
+     Room(Scanner s, Dungeon d, boolean initState, boolean isHidden, boolean isLocked) throws NoRoomException,
+        Dungeon.IllegalDungeonFormatException {
+     
+     }
+    
+    
     // Common object initialization tasks.
     private void init() {
         contents = new ArrayList<Item>();
@@ -186,4 +212,17 @@ public class Room {
     ArrayList<Item> getContents() {
         return contents;
     }
+    
+    
+ /**
+ * unlock().
+ * This method unlocks the door using a riddle. When called the isLocked variable 
+ * becomes false.
+ * There are no parameters and the return type is void.
+ * @author Meredith
+ * 
+ */
+    void unlock(){
+
+}
 }
