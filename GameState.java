@@ -10,7 +10,11 @@ import java.io.IOException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-
+/**
+ * GameState both creates the game state and holds methods related to the player's
+ * game - this includes the current room, their inventory, and whether an earthquake
+ * has created havoc throughout the game. 
+ */
 public class GameState {
 
     public static class IllegalSaveFormatException extends Exception {
@@ -167,11 +171,11 @@ public class GameState {
     }
     
  /**
- * earthquake().
- * This method is called to initiate the effects of the earthquake to the game state.
- * There are no parameters and returns void. The method is called when the trigger
+ * 
+ * This method is called to initiate the effects of the earthquake to the game state -
+ * There are no parameters and returns void - The method is called when the trigger
  * number equals the movement number. 
- * @author Meredith
+ * @author Meredith Gregory
  * 
  */
     void earthquake(){
@@ -179,12 +183,12 @@ public class GameState {
     }
     
  /**
- * getNumMoves().
- * This method is a getter for the numMoves instance variable. It will be used 
+ * 
+ * This method is a getter for the numMoves instance variable - It will be used 
  * to see if the random trigger number and the movement number are equal which 
  * sets off an earthquake when they are. 
- * @author Meredith
- * @return int   This returns the instance variable numMoves 
+ * @author Meredith Gregory
+ * @return getNumMoves This returns the instance variable numMoves 
  * 
  */
     int getNumMoves(){
@@ -192,12 +196,12 @@ public class GameState {
     }
     
   /**
- * getTriggerNumber().
- * This method is a getter for the triggerNumber instance variable. It will be used 
+ *
+ * This method is a getter for the triggerNumber instance variable - It will be used 
  * to see if the random trigger number and the movement number are equal which 
- * sets off an earthquake when they are. 
- * @author Meredith
- * @return int   This returns the instance variable triggerNumber
+ *  sets off an earthquake when they are. 
+ * @author Meredith Gregory
+ * @return getTriggerNumber  This returns the instance variable triggerNumber
  * 
  */
     int getTriggerNumber(){
@@ -205,19 +209,19 @@ public class GameState {
     }
     
  /**
- * triggerEarthquake().
- *  This method is a boolean that will be true if an earthquake has occurred and 
- * false if no earthquake has been triggered. 
- * @author Meredith
- * @return boolean   This returns the boolean of whether or not an earthquake has
- *                      been triggered. It is false if no earthquake has occurred. 
- * @param int       The integer number triggerNumber is the only parameter. 
- *                      It will be equal to the instance variable also named triggerNumber.
  * 
+ *  This method is a boolean that will be true if an earthquake has occurred and 
+ *      false if no earthquake has been triggered. 
+ * @return triggerEarthquake   This returns the boolean of whether or not an earthquake has
+ *                      been triggered. It is false if no earthquake has occurred. 
+ * @param triggerNumber      The integer number triggerNumber is the only parameter. 
+ *                      It will be equal to the instance variable also named triggerNumber.
+ * @author Meredith Gregory
  */
     boolean triggerEarthquake(int triggerNumber){
         
     }
 
 }
+
 
