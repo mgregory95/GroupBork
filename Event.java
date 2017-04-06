@@ -1,17 +1,20 @@
+package zeitz_borkv3;
+
 /**
-* The Event class is an abstract class in which all different events
-* extend from. 
+* The Event class is an abstract class from which all different events
+* extend from.
 *
-* @author  Ava Mansouri
-* @version 1.0
-* @since   2017
+* @author  Ava
+* 
 */
-package borkgroupeventclass;
-
-
 abstract class Event {
     
-    //@return a String that the Event was executed
-    abstract String Execute(); 
+    /**
+     * The execute method that every class needs if it extends this class. 
+     * 
+     * @return @return a String that the Event was executed
+     */
+    abstract String execute(); 
     
 }
+
