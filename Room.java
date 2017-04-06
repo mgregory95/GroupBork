@@ -8,6 +8,12 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
+/**
+ * This room object holds a constructor and the methods that control the 
+ * attributes of a room object - These include things like unlocking the room, 
+ * adding or removing an item, and adding exits among others. 
+ */
 public class Room {
 
     class NoRoomException extends Exception {}
@@ -31,17 +37,7 @@ public class Room {
         this(s, d, true);
     }
 
-    /** Given a Scanner object positioned at the beginning of a "room" file
-        entry, read and return a Room object representing it. 
-        @param d The containing {@link edu.umw.stephen.bork.Dungeon} object, 
-        necessary to retrieve {@link edu.umw.stephen.bork.Item} objects.
-        @param initState should items listed for this room be added to it?
-        @throws NoRoomException The reader object is not positioned at the
-        start of a room entry. A side effect of this is the reader's cursor
-        is now positioned one line past where it was.
-        @throws IllegalDungeonFormatException A structural problem with the
-        dungeon file itself, detected when trying to read this room.
-     */
+
     Room(Scanner s, Dungeon d, boolean initState) throws NoRoomException,
         Dungeon.IllegalDungeonFormatException {
 
@@ -100,8 +96,7 @@ public class Room {
     dungeon file itself, detected when trying to read this room.
  * 
  */
-     Room(Scanner s, Dungeon d, boolean initState, boolean isHidden, boolean isLocked) throws NoRoomException,
-        Dungeon.IllegalDungeonFormatException {
+     Room(Scanner s, Dungeon d, boolean initState, boolean isHidden, boolean isLocked) throws NoRoomException, IllegalDungeonFormatException {
      
      }
     
@@ -215,14 +210,15 @@ public class Room {
     
     
  /**
- * unlock().
- * This method unlocks the door using a riddle. When called the isLocked variable 
+ *
+ * This method unlocks the door using a riddle - When called the isLocked variable 
  * becomes false.
  * There are no parameters and the return type is void.
- * @author Meredith
+ * @author Meredith Gregory
  * 
  */
     void unlock(){
 
 }
 }
+
