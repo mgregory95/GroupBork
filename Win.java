@@ -4,6 +4,7 @@ package borkgroupeventclass;
 /**
  * The win class is an event class. This class extends the abstract class Event. 
  * This class produces a win message and closes down the game when instantiated.  
+ * @author Ava 
  */
 public class Win extends Event {
     
