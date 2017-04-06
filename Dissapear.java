@@ -1,26 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package borkgroupeventclass;
+package zeitz_borkv3;
 
 /**
- *
- * @author Ava Mansouri
+ * Once a certain item has been used to its fullest potential, it can
+ * disappear from the game entirely. A donut may be eaten or a can of Dr.
+ * Pepper may be drank and then crushed and recycled and is then no longer
+ * able to be seen ever again by the adventurer.
+ * 
+ * @author Ava
  */
-public class Dissapear extends Event {
+class Disappear extends Event {
     
     private Item p;
     
     
-    /**@param p is the Item that needs to dissapear*/ 
+    /**
+     * The constructor for the disappear class takes in an item that is
+     * no longer going to be available to the adventurer.
+     * 
+     * @param p is the Item that needs to disappear
+    */ 
     
-    public Dissapear(Item p){
-        
+    public Disappear(Item p){
+       this.p = p;
     }
     
-    /**@return String that the item dissapeared*/
+    /**
+     * The execute method simply deletes the item from the dungeon inventory
+     * or from the adventurers inventory. This removes it entirely from the
+     * game. It is based on the item itself and what it takes for it to
+     * completely disappear.
+     * 
+     * @return String that the item disappeared
+    */
     
     public String execute(){
         
