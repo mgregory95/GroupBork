@@ -4,6 +4,7 @@ package borkgroupeventclass;
 /**
  * The wound class is an event class. This class extends the abstract class Event. 
  * This class maintains a health value that the execute method alters when called. 
+ * @author Ava
  */
 public class Wound extends Event {
     
