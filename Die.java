@@ -1,24 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package borkgroupeventclass;
+package zeitz_borkv3;
 
 /**
- *
- * @author Ava Mansouri
+ * 
+ * 
+ * @author Ava
  */
-public class Die extends Event {
-    
+class Die extends Event {
+    /**
+     * The die constructor simply creates the event of dying. Nothing
+     * is taken in nor given out.
+     */
     public Die(){
         
     }
     
-    /**@return String that the player has died */
+    /**
+     * The execute function that tells the adventurer that they have died
+     * and ends the game.
+     * 
+     * @return String that the player has died
+    */
     
     public String execute(){
         
     }
     
 }
+
