@@ -1,25 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package borkgroupeventclass;
 
 /**
- *
- * @author StudyMode
+ * The wound class is an event class. This class extends the abstract class Event. 
+ * This class maintains a health value that the execute method alters when called. 
  */
 public class Wound extends Event {
     
     private int p; 
     
-    //@param int p is the level of health that needs to be manipulated
+    
+ /**
+ * This is the Wound constructor. When the adventurer is "wounded" a wound event is created. 
+ * @param p  an integer that is the level of health that needs to be manipulated
+ * @author Ava Monsouri
+ */
+    
     public Wound(int p){
         
     }
     
-    //@return a String saying the player was wounded
-    
+ /**
+ * This is the execute method that the Wound class must have after extending Event - execute alters the 
+ * health of the adventurer
+ * @return a String saying the player was wounded
+ * @author Ava Monsouri
+ */ 
     public String execute(){
         
     }
