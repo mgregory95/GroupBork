@@ -3,7 +3,11 @@ package zeitz_borkv3;
 
 
 import java.util.Scanner;
-
+/**
+ * The exit class constructs an exit object with the constructor and holds all
+ * relevant information regarding the exit object - this information includes 
+ * the source room and the destination of each object and whether it is hidden or not. 
+ */
 public class Exit {
 
     class NoExitException extends Exception {}
@@ -19,16 +23,7 @@ public class Exit {
         src.addExit(this);
     }
 
-    /** Given a Scanner object positioned at the beginning of an "exit" file
-        entry, read and return an Exit object representing it. 
-        @param d The dungeon that contains this exit (so that Room objects 
-        may be obtained.)
-        @throws NoExitException The reader object is not positioned at the
-        start of an exit entry. A side effect of this is the reader's cursor
-        is now positioned one line past where it was.
-        @throws IllegalDungeonFormatException A structural problem with the
-        dungeon file itself, detected when trying to read this room.
-     */
+
     Exit(Scanner s, Dungeon d) throws NoExitException,
         Dungeon.IllegalDungeonFormatException {
 
@@ -70,8 +65,7 @@ public class Exit {
         @throws IllegalDungeonFormatException A structural problem with the
         dungeon file itself, detected when trying to read this room.
      */
-    Exit(Scanner s, Dungeon d, boolean visibility) throws NoExitException,
-        Dungeon.IllegalDungeonFormatException {
+    Exit(Scanner s, Dungeon d, boolean visibility) throws NoExitException, IllegalDungeonFormatException {
         
     }
 
@@ -89,15 +83,15 @@ public class Exit {
     
     
  /**
- * unlock().
- * This method is a getter for the visibility instance variable. This allows you 
- * access to this variable. 
- * @return boolean visibility     visibility is a boolean that states whether the 
- *                                  exit is hidden or not. 
- * @author Meredith
+ * 
+ * This method is a getter for the visibility instance variable - Visibility will 
+ * let the user know if an exit is hidden or not; If hidden visibility will be false.
+ * @return visibility  - a boolean that expresses the visibility 
+ *  @author Meredith Gregory
  * 
  */
     boolean getVisibility(){
         
     }
 }
+
