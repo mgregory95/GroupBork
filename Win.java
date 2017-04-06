@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package borkgroupeventclass;
 
 /**
- *
- * @author Ava Mansouri
+ * The win class is an event class. This class extends the abstract class Event. 
+ * This class produces a win message and closes down the game when instantiated.  
  */
 public class Win extends Event {
     
