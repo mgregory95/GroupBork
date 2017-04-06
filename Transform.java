@@ -5,6 +5,7 @@ package borkgroupeventclass;
 /**
 * The transform class is an event class. This class extends the abstract class Event. 
 * This class produces a message and alters an item when called. 
+* @author Ava 
 */
 public class Transform extends Event {
     
