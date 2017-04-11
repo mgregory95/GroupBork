@@ -1,5 +1,6 @@
 
-package borkgroupeventclass;
+
+package GroupBork;
 
 /**
  * The win class is an event class. This class extends the abstract class Event. 
@@ -24,7 +25,8 @@ public class Win extends Event {
 */
     
     public String execute(){
-        
+        GameState.instance().setWinStatus(true);
+        return "YOU WIN! Congrats you beat the game!";
     }
     
 }
