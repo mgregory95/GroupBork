@@ -1,4 +1,5 @@
-package zeitz_borkv3;
+
+package GroupBork;
 
 /**
  * 
@@ -22,8 +23,10 @@ class Die extends Event {
     */
     
     public String execute(){
+        return "Tramatic event. Your death is emminent. Use your last move wisely.";
         
     }
     
 }
+
 
