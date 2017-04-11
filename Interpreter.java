@@ -1,5 +1,6 @@
 
-package edu.umw.stephen.bork;
+
+package GroupBork;
 
 import java.util.Scanner;
 
@@ -48,11 +49,15 @@ public class Interpreter {
             command = promptUser(commandLine);
 
             while (!command.equals("q")) {
+                if(state.getHealth()!=0){
 
-                System.out.print(
-                    CommandFactory.instance().parse(command).execute());
+                    System.out.print(
+                        CommandFactory.instance().parse(command).execute());
 
-                command = promptUser(commandLine);
+                    command = promptUser(commandLine);
+                }
+                else
+                    System.exit(0);
             }
 
             System.out.println("Bye!");
