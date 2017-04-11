@@ -1,5 +1,4 @@
 
-
 package GroupBork;
 
 import java.util.Scanner;
@@ -49,7 +48,7 @@ public class Interpreter {
             command = promptUser(commandLine);
 
             while (!command.equals("q")) {
-                if(state.getHealth()!=0){
+                if(state.getHealth()!=0 && state.getWinStatus()==false){
 
                     System.out.print(
                         CommandFactory.instance().parse(command).execute());
@@ -87,3 +86,4 @@ public class Interpreter {
     }
 
 }
+
