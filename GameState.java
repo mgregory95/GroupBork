@@ -1,6 +1,5 @@
 
-package zeitz_borkv3;
-
+package GroupBork;
 
 
 import java.util.Scanner;
@@ -35,6 +34,7 @@ public class GameState {
     private Dungeon dungeon;
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
+    private int health;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -221,7 +221,13 @@ public class GameState {
     boolean triggerEarthquake(int triggerNumber){
         
     }
+    
+    int getHealth(){
+        return this.health;
+    }
 
 }
+
+
 
 
