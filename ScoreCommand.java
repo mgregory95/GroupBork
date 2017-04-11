@@ -24,7 +24,7 @@ class ScoreCommand extends Command{
      * @return String   a string of the numeric score of the adventurer
      *  
      */
-    String execute() {
-        //return current score
+    String execute(){
+        return "This is the score command.\n";
     }
 }
