@@ -1,4 +1,5 @@
 
+
 package GroupBork;
 
 
@@ -35,6 +36,7 @@ public class GameState {
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
     private int health;
+    private boolean win = false;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -224,6 +226,13 @@ public class GameState {
     
     int getHealth(){
         return this.health;
+    }
+    
+    void setWinStatus(boolean b){
+        this.win = b;
+    }
+    boolean getWinStatus(){
+        return this.win;
     }
 
 }
