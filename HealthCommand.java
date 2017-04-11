@@ -27,6 +27,7 @@ class HealthCommand extends Command{
      *                  based on how much health he/she has.
      */
     String execute() {
-        //return health message
+        return "This is your health.\n";
     }
 }
+
