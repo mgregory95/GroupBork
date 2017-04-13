@@ -7,10 +7,20 @@ package zeitz_borkv3;
  * able to be seen ever again by the adventurer.
  * 
  * @author Ava
+
+package GroupBork;
+
+/**
+ * Once a certain item has been used to its fullest potential, it can
+ * disappear from the game entirely. A donut may be eaten or a can of Dr.
+ * Pepper may be drank and then crushed and recycled and is then no longer
+ * able to be seen ever again by the adventurer.
+ * 
+ * @author Ava
  */
 class Disappear extends Event {
     
-    private Item p;
+ 
     
     
     /**
@@ -20,8 +30,8 @@ class Disappear extends Event {
      * @param p is the Item that needs to disappear
     */ 
     
-    public Disappear(Item p){
-       this.p = p;
+    public Disappear(){
+       
     }
     
     /**
@@ -34,7 +44,8 @@ class Disappear extends Event {
     */
     
     public String execute(){
-        
+        System.out.println("all gone!");
+        return "disappear executed";
     }
     
 }
