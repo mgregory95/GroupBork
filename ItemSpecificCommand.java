@@ -1,5 +1,9 @@
-
-package zeitz_borkv3;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package GroupBork;
 
 class ItemSpecificCommand extends Command {
 
@@ -13,16 +17,26 @@ class ItemSpecificCommand extends Command {
     }
 
     public String execute() {
-        
-        Item itemReferredTo = null;
-        try {
-            itemReferredTo = GameState.instance().getItemInVicinityNamed(noun);
+        try{
+            GameState gs = GameState.instance();
+            Item i = gs.getDungeon().getItem(noun);
+            String message = i.getMessageForVerb(verb);
+            String event = i.getEventFromVerb(verb);
+            if(event.contains(",")){
+                String [] separateEvents = event.split(",");
+                for(int j = 0; j< separateEvents.length; j++){
+                    if(i.getEventFromVerb(verb)!=null){
+                        EventFactory.instance().parse(separateEvents[j]).execute();
+                    }
+                }
+            }
+            return message + "\n";
+        } catch (NullPointerException e){
+            return("Sorry, you can't " + verb + " the " + noun + ".");
         } catch (Item.NoItemException e) {
             return "There's no " + noun + " here.";
+        
         }
         
-        String msg = itemReferredTo.getMessageForVerb(verb);
-        return (msg == null ? 
-            "Sorry, you can't " + verb + " the " + noun + "." : msg) + "\n";
     }
 }
