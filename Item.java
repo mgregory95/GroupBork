@@ -1,6 +1,9 @@
-
-package zeitz_borkv3;
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package GroupBork;
 import java.util.Scanner;
 import java.util.Hashtable;
 
@@ -11,12 +14,15 @@ public class Item {
     private String primaryName;
     private int weight;
     private Hashtable<String,String> messages;
+    private Hashtable<String,String> events;
+
 
 
     Item(Scanner s) throws NoItemException,
         Dungeon.IllegalDungeonFormatException {
 
         messages = new Hashtable<String,String>();
+        events = new Hashtable<String,String>();
 
         // Read item name.
         primaryName = s.nextLine();
@@ -35,9 +41,17 @@ public class Item {
                     Dungeon.SECOND_LEVEL_DELIM + "' after item.");
             }
             String[] verbParts = verbLine.split(":");
-            messages.put(verbParts[0],verbParts[1]);
-            
+            if(verbParts[0].contains("[")){
+                String [] verbSplit = verbParts[0].split("\\[");
+                messages.put(verbSplit[0], verbParts[1]);           //verbSplit[0] is the verb verbParts[1] is the message
+                String event = verbSplit[1].replace("]", " ").trim();
+                events.put(verbSplit[0], event);            //verbSplit[0] is the verb and events is the entire string of events
+            }
+            else {
+                messages.put(verbParts[0],verbParts[1]);
+            }
             verbLine = s.nextLine();
+            
         }
     }
 
@@ -54,5 +68,9 @@ public class Item {
 
     public String toString() {
         return primaryName;
+    }
+    
+    public String getEventFromVerb(String verb){
+        return events.get(verb);
     }
 }
