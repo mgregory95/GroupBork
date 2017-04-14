@@ -1,5 +1,6 @@
 
 
+
 package GroupBork;
 
 
@@ -23,20 +24,23 @@ public class GameState {
         }
     }
 
-    static String DEFAULT_SAVE_FILE = "bork_save";
+    static String DEFAULT_SAVE_FILE = "zork_save";
     static String SAVE_FILE_EXTENSION = ".sav";
-    static String SAVE_FILE_VERSION = "Bork v3.0 save data";
+    static String SAVE_FILE_VERSION = "Zork G3a save data";
 
     static String ADVENTURER_MARKER = "Adventurer:";
     static String CURRENT_ROOM_LEADER = "Current room: ";
     static String INVENTORY_LEADER = "Inventory: ";
+    static String SCORE_LEADER = "Score:";
+    static String HEALTH_LEADER = "Health:";
 
     private static GameState theInstance;
     private Dungeon dungeon;
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
-    private int health;
+    private int health = 100;
     private boolean win = false;
+    private int score;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -87,6 +91,14 @@ public class GameState {
                 }
             }
         }
+        if (s.hasNext()){
+            String score = s.nextLine().substring(SCORE_LEADER.length());
+            this.setScore(Integer.parseInt(score));
+        }
+        if (s.hasNext()){
+            String health = s.nextLine().substring(HEALTH_LEADER.length());
+            this.setHealth(Integer.parseInt(health));
+        }
     }
 
     void store() throws IOException {
@@ -105,8 +117,10 @@ public class GameState {
             for (int i=0; i<inventory.size()-1; i++) {
                 w.print(inventory.get(i).getPrimaryName() + ",");
             }
-            w.println(inventory.get(inventory.size()-1).getPrimaryName());
+            w.println(inventory.get(inventory.size()-1).getPrimaryName());  
         }
+        w.println(SCORE_LEADER + this.score);
+        w.println(HEALTH_LEADER + this.health);
         w.close();
     }
 
@@ -193,9 +207,9 @@ public class GameState {
  * @return getNumMoves This returns the instance variable numMoves 
  * 
  */
-    int getNumMoves(){
+    //int getNumMoves(){
         
-    }
+    //}
     
   /**
  *
@@ -206,9 +220,9 @@ public class GameState {
  * @return getTriggerNumber  This returns the instance variable triggerNumber
  * 
  */
-    int getTriggerNumber(){
+    //int getTriggerNumber(){
         
-    }
+    //}
     
  /**
  * 
@@ -220,12 +234,15 @@ public class GameState {
  *                      It will be equal to the instance variable also named triggerNumber.
  * @author Meredith Gregory
  */
-    boolean triggerEarthquake(int triggerNumber){
+   // boolean triggerEarthquake(int triggerNumber){
         
-    }
+    //}
     
     int getHealth(){
         return this.health;
+    }
+    void setHealth(int health){
+        this.health = this.health + health;
     }
     
     void setWinStatus(boolean b){
@@ -234,8 +251,16 @@ public class GameState {
     boolean getWinStatus(){
         return this.win;
     }
+    int getScore(){
+        return this.score;
+    }
+    void setScore(int scoreChange){
+        this.score = this.score + scoreChange;
+    }
 
 }
+
+
 
 
 
