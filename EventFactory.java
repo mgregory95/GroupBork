@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package GroupBork;
 import java.util.List;
 import java.util.Arrays;
@@ -42,6 +38,8 @@ public class EventFactory {
             return new Wound(Integer.parseInt(parameter));
         if(eventName.equals("Win"))
             return new Win();
+        if(eventName.equals("Die"))
+            return new Die();
         if(eventName.equals("Disappear"))
             return new Disappear();
         if(eventName.equals("Score"))
@@ -56,4 +54,5 @@ public class EventFactory {
             return null;        
     }
 }
+
 
