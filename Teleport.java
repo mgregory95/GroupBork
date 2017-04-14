@@ -1,6 +1,6 @@
 
-package borkgroupeventclass;
 
+package GroupBork;
 
 /**
 * The teleport class is an event class. This class extends the abstract class Event. 
@@ -26,8 +26,20 @@ public class Teleport extends Event {
 * @author Ava 
 */
 
-    public String execute(){
-        
+    
+    public String execute(String s){
+        Room newRoom = GameState.instance().getDungeon().getRoom("Rotunda");
+        GameState.instance().setAdventurersCurrentRoom(newRoom);
+        if(GameState.instance().getAdventurersCurrentRoom().equals(newRoom)){
+            Room alternateRoom = GameState.instance().getDungeon().getRoom("Basement");
+            GameState.instance().setAdventurersCurrentRoom(alternateRoom);
+            alternateRoom.setBeenHere(true);
+            return "\n" + alternateRoom.describe() + "\n";
+        }
+        else{
+            newRoom.setBeenHere(true);
+            return "\n" + newRoom.describe() + "\n";
+        }
     }
     
 }
