@@ -1,5 +1,6 @@
 
 
+
 package GroupBork;
 
 /**
@@ -24,8 +25,11 @@ class Die extends Event {
     */
     
     public String execute(String s){
+        GameState gs = GameState.instance();
+        gs.setHealth(0);
         return "Tramatic event. Your death is emminent. Use your last move wisely.";
         
     }
     
 }
+
