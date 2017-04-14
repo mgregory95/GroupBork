@@ -21,17 +21,19 @@ class ItemSpecificCommand extends Command {
             GameState gs = GameState.instance();
             Item i = gs.getDungeon().getItem(noun);
             String message = i.getMessageForVerb(verb);
-            String event = i.getEventFromVerb(verb);
-            if(event.contains(",")){
-                String [] separateEvents = event.split(",");
-                for(int j = 0; j< separateEvents.length; j++){
-                    if(i.getEventFromVerb(verb)!=null){
-                        EventFactory.instance().parse(separateEvents[j]).execute(noun);
+            if(i.getEventFromVerb(verb)!= null){
+                String event = i.getEventFromVerb(verb);
+                if(event.contains(",")){
+                    String [] separateEvents = event.split(",");
+                    for(int j = 0; j< separateEvents.length; j++){
+                        if(i.getEventFromVerb(verb)!=null){
+                            System.out.println(EventFactory.instance().parse(separateEvents[j]).execute(noun));
+                        }
                     }
                 }
+                else
+                    System.out.println(EventFactory.instance().parse(event).execute(noun));
             }
-            else
-                EventFactory.instance().parse(event).execute(noun);
             return message + "\n";
         } catch (NullPointerException e){
             return("Sorry, you can't " + verb + " the " + noun + ".\n");
@@ -43,4 +45,5 @@ class ItemSpecificCommand extends Command {
     }
     
 }
+
 
