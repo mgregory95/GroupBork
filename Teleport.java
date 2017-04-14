@@ -1,6 +1,10 @@
 
 
+
 package GroupBork;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
 * The teleport class is an event class. This class extends the abstract class Event. 
@@ -28,18 +32,27 @@ public class Teleport extends Event {
 
     
     public String execute(String s){
-        Room newRoom = GameState.instance().getDungeon().getRoom("Rotunda");
-        GameState.instance().setAdventurersCurrentRoom(newRoom);
-        if(GameState.instance().getAdventurersCurrentRoom().equals(newRoom)){
-            Room alternateRoom = GameState.instance().getDungeon().getRoom("Basement");
-            GameState.instance().setAdventurersCurrentRoom(alternateRoom);
-            alternateRoom.setBeenHere(true);
-            return "\n" + alternateRoom.describe() + "\n";
-        }
-        else{
+        GameState gs = GameState.instance();
+        Room currentRoom = gs.getAdventurersCurrentRoom();
+        
+        ArrayList<String> roomsArray = Collections.list(gs.getDungeon().getAllRooms().keys());
+        int index = roomsArray.size()/2;
+        String newRoomName = roomsArray.get(index);
+        String alternateRoomName = roomsArray.get(index-1);
+        
+        
+        Room newRoom = gs.getDungeon().getRoom(newRoomName);
+        Room alternateRoom = gs.getDungeon().getRoom(alternateRoomName);
+        if(!currentRoom.equals(newRoom)){
+            gs.setAdventurersCurrentRoom(newRoom);
             newRoom.setBeenHere(true);
             return "\n" + newRoom.describe() + "\n";
         }
+        else {
+            gs.setAdventurersCurrentRoom(alternateRoom);
+            alternateRoom.setBeenHere(true);
+            return "\n" + alternateRoom.describe() + "\n";
+        }    
     }
     
 }
