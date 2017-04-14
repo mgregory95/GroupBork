@@ -1,4 +1,5 @@
 
+
 package GroupBork;
 
 /**
@@ -10,15 +11,11 @@ package GroupBork;
  * @author Ava
  */
 class Disappear extends Event {
-    private String itemName;
- 
-    
-    
+
     /**
      * The constructor for the disappear class takes in an item that is
      * no longer going to be available to the adventurer.
      * 
-     * @param p is the Item that needs to disappear
     */ 
     
     public Disappear(){
@@ -50,9 +47,16 @@ class Disappear extends Event {
             GameState.instance().getDungeon().getAllItems().remove(itemName);
         }
         //remove item from room inventory 
-        if(GameState.instance().getAdventurersCurrentRoom().getContents().contains(itemName)){
-            GameState.instance().getAdventurersCurrentRoom().getContents().remove(itemName);
+        try{
+            Room r = GameState.instance().getAdventurersCurrentRoom();
+            Item i = r.getItemNamed(itemName);
+            if(r.getContents().contains(i)){
+                r.getContents().remove(i);
+            }
+        }catch (Item.NoItemException e) {
+            System.out.println("Sorry! That Item doesnt exist!");
         }
+             
         return "";
     }
     
