@@ -26,17 +26,21 @@ class ItemSpecificCommand extends Command {
                 String [] separateEvents = event.split(",");
                 for(int j = 0; j< separateEvents.length; j++){
                     if(i.getEventFromVerb(verb)!=null){
-                        EventFactory.instance().parse(separateEvents[j]).execute();
+                        EventFactory.instance().parse(separateEvents[j]).execute(noun);
                     }
                 }
             }
+            else
+                EventFactory.instance().parse(event).execute(noun);
             return message + "\n";
         } catch (NullPointerException e){
-            return("Sorry, you can't " + verb + " the " + noun + ".");
+            return("Sorry, you can't " + verb + " the " + noun + ".\n");
         } catch (Item.NoItemException e) {
-            return "There's no " + noun + " here.";
+            return "There's no " + noun + " here.\n";
         
         }
         
     }
+    
 }
+
