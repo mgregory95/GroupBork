@@ -1,5 +1,6 @@
 
 
+
 package GroupBork;
 
 import java.util.Scanner;
@@ -60,7 +61,7 @@ public class Interpreter {
                     System.exit(0);
             }
 
-            System.out.println("Bye!");
+            System.out.println("Welp, Adios!");
 
         } catch(Exception e) { 
             e.printStackTrace(); 
@@ -87,3 +88,4 @@ public class Interpreter {
     //}
 
 }
+
