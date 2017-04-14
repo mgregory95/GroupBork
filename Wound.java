@@ -1,5 +1,6 @@
 
-package borkgroupeventclass;
+
+package GroupBork;
 
 /**
  * The wound class is an event class. This class extends the abstract class Event. 
@@ -27,8 +28,12 @@ public class Wound extends Event {
  * @return a String saying the player was wounded
  * @author Ava 
  */ 
-    public String execute(){
+    public String execute(String s){
+        int currentHealth = GameState.instance().getHealth();
+        int newHealth = currentHealth - p;
         
+        GameState.instance().setHealth(newHealth);
+        return "";
     }
     
 }
