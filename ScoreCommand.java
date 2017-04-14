@@ -1,5 +1,6 @@
 
-package zeitz_borkv3;
+
+package GroupBork;
 
 /**
  * Used when the adventurer prompts the system to return their current score
@@ -25,6 +26,28 @@ class ScoreCommand extends Command{
      *  
      */
     String execute(){
-        return "This is the score command.\n";
+        GameState gs = GameState.instance();
+        int score = gs.getScore();
+        
+        String adventurerRank = "";
+        if(score >= 0 && score < 10){
+            adventurerRank = "Beginner";
+        }
+        else if  (score >= 10 && score < 25){
+            adventurerRank = "Amateur Adventurer";
+        }
+        else if  (score >= 25 && score < 50){
+            adventurerRank = "Advanced Adventurer";
+        }
+        else if  (score >= 50 && score < 75){
+            adventurerRank = "Professional Adventurer";
+        }
+        else if  (score >= 75 && score < 100){
+            adventurerRank = "Master Adventurer";
+        }
+        else if  (score >= 100){
+            adventurerRank = "Indiana Jones";
+        }
+        return "You have " + score + " points on this adventure. You have a rank of " + adventurerRank.trim() + ".\n";
     }
 }
