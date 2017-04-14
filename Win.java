@@ -1,5 +1,6 @@
 
 
+
 package GroupBork;
 
 /**
@@ -24,7 +25,7 @@ public class Win extends Event {
 * @author Ava
 */
     
-    public String execute(){
+    public String execute(String s){
         GameState.instance().setWinStatus(true);
         return "YOU WIN! Congrats you beat the game!";
     }
