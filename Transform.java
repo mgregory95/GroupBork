@@ -1,5 +1,8 @@
 
-package borkgroupeventclass;
+
+package GroupBork;
+
+import GroupBork.Item.NoItemException;
 
 
 /**
@@ -9,16 +12,16 @@ package borkgroupeventclass;
 */
 public class Transform extends Event {
     
-    private Item p; 
+    private String itemName; 
     
  /**
  * This is the Transform constructor. When an item is transformed a transform event is created. 
- * @param p  an item that is to be transformed
+ * @param itemName  a String name of the item that the existing item will become 
  * @author Ava 
  */
     
-    public Transform(Item p){
-        
+    public Transform(String itemName){
+        this.itemName = itemName;
     }
     
 /**
@@ -26,10 +29,25 @@ public class Transform extends Event {
 * state of an item
 * @return a String saying the Item was transformed
 * @author Ava 
+     * @throws GroupBork.Item.NoItemException 
 */
     
-    public String execute(){
-        
+    public String execute(String s) {
+        try{
+            GameState gs = GameState.instance();
+            //activate new item
+            Item newItem = gs.getDungeon().getItem(itemName);
+            Room current = gs.getAdventurersCurrentRoom();
+            current.add(newItem);
+            //disappear the old item
+            Disappear d = new Disappear();
+            d.execute(s);
+            
+            
+            
+            
+        }catch (Item.NoItemException e) {}
+        return "transform executed";
     }
     
 }
