@@ -1,12 +1,3 @@
-package zeitz_borkv3;
-
-/**
- * Once a certain item has been used to its fullest potential, it can
- * disappear from the game entirely. A donut may be eaten or a can of Dr.
- * Pepper may be drank and then crushed and recycled and is then no longer
- * able to be seen ever again by the adventurer.
- * 
- * @author Ava
 
 package GroupBork;
 
@@ -19,7 +10,7 @@ package GroupBork;
  * @author Ava
  */
 class Disappear extends Event {
-    
+    private String itemName;
  
     
     
@@ -31,7 +22,7 @@ class Disappear extends Event {
     */ 
     
     public Disappear(){
-       
+        
     }
     
     /**
@@ -43,9 +34,26 @@ class Disappear extends Event {
      * @return String that the item disappeared
     */
     
-    public String execute(){
-        System.out.println("all gone!");
-        return "disappear executed";
+    public String execute(String itemName){
+        //remove item from inventory if it is there
+        if(GameState.instance().getInventoryNames().contains(itemName)){
+            try{
+                Item i = GameState.instance().getDungeon().getRoom(itemName).getItemNamed(itemName);
+                GameState.instance().removeFromInventory(i);
+            }
+            catch (Item.NoItemException e) {
+            System.out.println("Sorry! That Item doesnt exist!");}
+            }
+        
+        //remove item from the dungeon inventory (hashtable)
+        if(GameState.instance().getDungeon().getAllItems().containsKey(itemName)){
+            GameState.instance().getDungeon().getAllItems().remove(itemName);
+        }
+        //remove item from room inventory 
+        if(GameState.instance().getAdventurersCurrentRoom().getContents().contains(itemName)){
+            GameState.instance().getAdventurersCurrentRoom().getContents().remove(itemName);
+        }
+        return "";
     }
     
 }
