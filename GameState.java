@@ -1,6 +1,7 @@
 
 
 
+
 package GroupBork;
 
 
@@ -242,7 +243,7 @@ public class GameState {
         return this.health;
     }
     void setHealth(int health){
-        this.health = this.health + health;
+        this.health = health;
     }
     
     void setWinStatus(boolean b){
@@ -255,10 +256,12 @@ public class GameState {
         return this.score;
     }
     void setScore(int scoreChange){
-        this.score = this.score + scoreChange;
+        this.score = scoreChange;
     }
 
 }
+
+
 
 
 
