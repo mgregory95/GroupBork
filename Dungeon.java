@@ -1,5 +1,11 @@
 
-package zeitz_borkv3;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package GroupBork;
+
 
 import java.util.Hashtable;
 import java.util.Scanner;
@@ -43,20 +49,12 @@ public class Dungeon {
         rooms = new Hashtable<String,Room>();
     }
 
-    /**
-     * Read from the .bork filename passed, and instantiate a Dungeon object
-     * based on it.
-     */
     public Dungeon(String filename) throws FileNotFoundException, 
         IllegalDungeonFormatException {
 
         this(filename, true);
     }
 
-    /**
-     * Read from the .bork filename passed, and instantiate a Dungeon object
-     * based on it, including (possibly) the items in their original locations.
-     */
     public Dungeon(String filename, boolean initState) 
         throws FileNotFoundException, IllegalDungeonFormatException {
 
@@ -171,11 +169,7 @@ public class Dungeon {
         return rooms.get(roomTitle);
     }
 
-    /**
-     * Get the Item object whose primary name is passed. This has nothing to
-     * do with where the Adventurer might be, or what's in his/her inventory,
-     * etc.
-     */
+
     public Item getItem(String primaryItemName) throws Item.NoItemException {
         
         if (items.get(primaryItemName) == null) {
@@ -183,4 +177,12 @@ public class Dungeon {
         }
         return items.get(primaryItemName);
     }
+    
+    public Hashtable getAllItems(){
+        return this.items;
+    }
+    public Hashtable getAllRooms(){
+        return this.rooms;
+    }
 }
+
