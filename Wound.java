@@ -19,7 +19,7 @@ public class Wound extends Event {
  */
     
     public Wound(int p){
-        
+        this.p = p;
     }
     
  /**
@@ -30,7 +30,7 @@ public class Wound extends Event {
  */ 
     public String execute(String s){
         int currentHealth = GameState.instance().getHealth();
-        int newHealth = currentHealth - p;
+        int newHealth = currentHealth + this.p;
         
         GameState.instance().setHealth(newHealth);
         return "";
