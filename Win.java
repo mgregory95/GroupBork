@@ -1,6 +1,4 @@
 
-
-
 package GroupBork;
 
 /**
@@ -27,7 +25,7 @@ public class Win extends Event {
     
     public String execute(String s){
         GameState.instance().setWinStatus(true);
-        return "YOU WIN! Congrats you beat the game!";
+        return "YOU WIN! Congrats you beat the game! Type one final farewell message to close the game!";
     }
     
 }
