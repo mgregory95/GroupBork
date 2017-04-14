@@ -1,5 +1,5 @@
-package zeitz_borkv3;
 
+package GroupBork;
 /**
  * This class keeps track of the adventurers score and will add or subtract
  * from it depending on what happens. The user can use a command to stay
@@ -9,7 +9,7 @@ package zeitz_borkv3;
  */
 class Score extends Event {
     
-    private int score; 
+    private int additionalScore; 
     
     /**
      * The constructor method for the score event takes in the number of
@@ -18,7 +18,7 @@ class Score extends Event {
      * @param int s is the change in point value
     */
     public Score(int s){
-        this.score = score + s;
+        this.additionalScore = s;
     }
     
     /**
@@ -29,8 +29,12 @@ class Score extends Event {
      * 
      * @return a String saying that the user has scored and the updated score
     */ 
-    public String execute(){
+    public String execute(String s){
+        int previousScore = GameState.instance().getScore();
+        int newScore = previousScore + additionalScore;
         
+        GameState.instance().setScore(newScore);
+       return "You gained " + additionalScore + "points!\nYou now have " + newScore + " points!";
     }
     
 }
