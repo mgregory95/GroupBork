@@ -30,7 +30,6 @@ public class EventFactory {
     public Event parse(String event) throws Item.NoItemException {
         String eventName = "";
         String parameter = "";
-        //if no comma
         if(event.contains("(")){                       
                 String [] eventParts = event.split("\\(");
                 parameter = eventParts[1].replace(")", " ").trim();
@@ -51,9 +50,10 @@ public class EventFactory {
             return new Teleport();
         if(eventName.equals("Transform")){
             Item item = GameState.instance().getDungeon().getItem(parameter);
-            return new Transform(item);
+            return new Transform(item.toString());
         }
         else 
             return null;        
     }
 }
+
