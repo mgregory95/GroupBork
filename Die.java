@@ -1,4 +1,5 @@
 
+
 package GroupBork;
 
 /**
@@ -22,11 +23,9 @@ class Die extends Event {
      * @return String that the player has died
     */
     
-    public String execute(){
+    public String execute(String s){
         return "Tramatic event. Your death is emminent. Use your last move wisely.";
         
     }
     
 }
-
-
