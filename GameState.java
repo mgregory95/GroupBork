@@ -256,7 +256,7 @@ public class GameState {
         return this.score;
     }
     void setScore(int scoreChange){
-        this.score = scoreChange;
+        this.score = this.score + scoreChange;
     }
 
 }
