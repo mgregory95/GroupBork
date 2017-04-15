@@ -1,5 +1,6 @@
 
 
+
 package GroupBork;
 
 /**
@@ -30,7 +31,7 @@ public class Wound extends Event {
  */ 
     public String execute(String s){
         int currentHealth = GameState.instance().getHealth();
-        int newHealth = currentHealth + this.p;
+        int newHealth = currentHealth - this.p;
         
         GameState.instance().setHealth(newHealth);
         return "";
