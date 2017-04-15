@@ -1,6 +1,7 @@
 
 
 
+
 package GroupBork;
 
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class Teleport extends Event {
         else {
             gs.setAdventurersCurrentRoom(alternateRoom);
             alternateRoom.setBeenHere(true);
-            return "\n" + alternateRoom.describe() + "\n";
+            return alternateRoom.describe() + "\n";
         }    
     }
     
