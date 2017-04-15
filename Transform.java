@@ -1,5 +1,6 @@
 
 
+
 package GroupBork;
 
 import GroupBork.Item.NoItemException;
@@ -47,7 +48,7 @@ public class Transform extends Event {
             
             
         }catch (Item.NoItemException e) {}
-        return "transform executed";
+        return "" + s + " has been transformed into " + itemName;
     }
     
 }
