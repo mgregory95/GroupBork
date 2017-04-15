@@ -19,7 +19,7 @@ class ItemSpecificCommand extends Command {
     public String execute() {
         try{
             GameState gs = GameState.instance();
-            Item i = gs.getDungeon().getItem(noun);
+            Item i = gs.getItemInVicinityNamed(noun);
             String message = i.getMessageForVerb(verb);
             if(i.getEventFromVerb(verb)!= null){
                 String event = i.getEventFromVerb(verb);
