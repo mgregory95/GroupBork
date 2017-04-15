@@ -1,6 +1,7 @@
 
 
 
+
 package GroupBork;
 
 /**
@@ -58,7 +59,7 @@ class Disappear extends Event {
             System.out.println("Sorry! That Item doesnt exist!");
         }
              
-        return "";
+        return itemName + " has disappeared";
     }
     
 }
