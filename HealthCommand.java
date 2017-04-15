@@ -1,5 +1,6 @@
 
 
+
 package GroupBork;
 /**
  * Used when the adventurer commands the system
@@ -47,6 +48,9 @@ class HealthCommand extends Command{
         }
         else if(health > 50 && health <=60){
             healthReturn = "Your stomach grumbles lightly.\n";
+        }
+        else if(health > 60 && health <=70){
+            healthReturn = "A little short of breath, but you are alright";
         }
         else if(health > 70 && health <=80){
             healthReturn = "You feel good and could eat something, but not in a hurry.\n";
