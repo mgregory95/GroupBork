@@ -1,5 +1,6 @@
 
 
+
 package GroupBork;
 /**
  * This class keeps track of the adventurers score and will add or subtract
@@ -18,8 +19,8 @@ class Score extends Event {
      * 
      * @param int s is the change in point value
     */
-    public Score(int s){
-        this.additionalScore = s;
+    public Score(int score){
+        this.additionalScore = score;
     }
     
     /**
@@ -35,7 +36,7 @@ class Score extends Event {
         int newScore = previousScore + additionalScore;
         
         GameState.instance().setScore(newScore);
-       return "You gained " + additionalScore + " points!\nYou now have " + newScore + " points!";
+       return "You gained " + additionalScore + " points!";
     }
     
 }
