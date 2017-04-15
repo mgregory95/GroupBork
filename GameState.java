@@ -1,4 +1,5 @@
 
+
 package GroupBork;
 
 
@@ -252,11 +253,13 @@ public class GameState {
     int getScore(){
         return this.score;
     }
-    void setScore(int scoreChange){
-        this.score = this.score + scoreChange;
+    void setScore(int newScore){
+        this.score = newScore;
     }
 
 }
+
+
 
 
 
