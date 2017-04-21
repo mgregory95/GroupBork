@@ -40,6 +40,7 @@ public class GameState {
     private int health = 100;
     private boolean win = false;
     private int score;
+    private int hunger; 
 
     static synchronized GameState instance() {
         if (theInstance == null) {
