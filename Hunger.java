@@ -21,10 +21,12 @@ public class Hunger {
     
     public void subtractHunger(){
         hunger --; 
+        GameState.instance().setHunger(hunger); 
     }
     
     public void eat (int foodValue){
         hunger += foodValue; 
+        GameState.instance().setHunger(hunger); 
     }
     
     public String getHunger(){
