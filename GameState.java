@@ -257,6 +257,12 @@ public class GameState {
     void setScore(int newScore){
         this.score = newScore;
     }
+    
+    void setHunger(int hunger){
+        this.hunger = hunger
+    }
+    
+    
 
 }
 
