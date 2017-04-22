@@ -1,9 +1,10 @@
-
-package zeitz_borkv3;
+package groupbork;
 
 class MovementCommand extends Command {
 
     private String dir;
+    private int numMoves = 0; 
+    
                        
 
     MovementCommand(String dir) {
@@ -15,7 +16,9 @@ class MovementCommand extends Command {
         Room nextRoom = currentRoom.leaveBy(dir);
         if (nextRoom != null) {  // could try/catch here.
             GameState.instance().setAdventurersCurrentRoom(nextRoom);
+            numMoves++; 
             return "\n" + nextRoom.describe() + "\n";
+            
         } else {
             return "You can't go " + dir + ".\n";
         }
