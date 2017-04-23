@@ -1,5 +1,6 @@
 
 
+
 package GroupBork;
 
 
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.Random;
 /**
  * GameState both creates the game state and holds methods related to the player's
  * game - this includes the current room, their inventory, and whether an earthquake
@@ -32,6 +34,10 @@ public class GameState {
     static String INVENTORY_LEADER = "Inventory: ";
     static String SCORE_LEADER = "Score:";
     static String HEALTH_LEADER = "Health:";
+    static String HUNGER_LEADER = "Hunger:";
+    static String TRIGGER_LEADER = "Trigger Number:";
+    static String MOVEMENT_LEADER = "Movement Number:";
+    
 
     private static GameState theInstance;
     private Dungeon dungeon;
@@ -40,7 +46,10 @@ public class GameState {
     private int health = 100;
     private boolean win = false;
     private int score;
-    private int hunger; 
+    private int numMoves;
+    private int triggerNum;
+    private int hunger = 100;
+    private boolean earthquakeTriggered = false;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -51,6 +60,7 @@ public class GameState {
 
     private GameState() {
         inventory = new ArrayList<Item>();
+        createRanTriggerNum();
     }
 
     void restore(String filename) throws FileNotFoundException,
@@ -99,6 +109,18 @@ public class GameState {
             String health = s.nextLine().substring(HEALTH_LEADER.length());
             this.setHealth(Integer.parseInt(health));
         }
+        if (s.hasNext()){
+            String hunger = s.nextLine().substring(HUNGER_LEADER.length());
+            this.setHunger(Integer.parseInt(hunger));
+        }
+        if (s.hasNext()){
+            String triggerNum = s.nextLine().substring(TRIGGER_LEADER.length());
+            this.setTriggerNum(Integer.parseInt(triggerNum));
+        }
+        if (s.hasNext()){
+            String movementNum = s.nextLine().substring(MOVEMENT_LEADER.length());
+            this.setMovementNumber(Integer.parseInt(movementNum));
+        }
     }
 
     void store() throws IOException {
@@ -121,6 +143,9 @@ public class GameState {
         }
         w.println(SCORE_LEADER + this.score);
         w.println(HEALTH_LEADER + this.health);
+        w.println(HUNGER_LEADER + this.hunger);
+        w.println(TRIGGER_LEADER + this.triggerNum);
+        w.println(MOVEMENT_LEADER + this.numMoves);
         w.close();
     }
 
@@ -195,7 +220,8 @@ public class GameState {
  * 
  */
     void earthquake(){
-        
+        this.adventurersCurrentRoom.clearExits();
+        System.out.println("An earthquake rocks your world. You are now stuck in this room. Your future looks dim.");
     }
     
  /**
@@ -207,22 +233,29 @@ public class GameState {
  * @return getNumMoves This returns the instance variable numMoves 
  * 
  */
-    //int getNumMoves(){
-        
-    //}
+    int getNumMoves(){
+        return this.numMoves;
+    }
+    // this one is used to update the movement number
+    void updateNumMoves(int moveNum){
+        this.numMoves = this.numMoves + moveNum;
+    }
+    //this one is used in the restore state
+    void setMovementNumber(int movementNum){
+        this.numMoves = movementNum;
+    }
     
-  /**
- *
- * This method is a getter for the triggerNumber instance variable - It will be used 
- * to see if the random trigger number and the movement number are equal which 
- *  sets off an earthquake when they are. 
- * @author Meredith Gregory
- * @return getTriggerNumber  This returns the instance variable triggerNumber
- * 
- */
-    //int getTriggerNumber(){
-        
-    //}
+    private void createRanTriggerNum(){
+         Random rand = new Random();
+         this.triggerNum = rand.nextInt(75) + 15;
+  
+    }
+    void setTriggerNum(int triggerNum){
+        this.triggerNum = triggerNum;
+    }
+    boolean getEarthquakeTriggers(){
+        return this.earthquakeTriggered;
+    }
     
  /**
  * 
@@ -230,13 +263,20 @@ public class GameState {
  *      false if no earthquake has been triggered. 
  * @return triggerEarthquake   This returns the boolean of whether or not an earthquake has
  *                      been triggered. It is false if no earthquake has occurred. 
- * @param triggerNumber      The integer number triggerNumber is the only parameter. 
- *                      It will be equal to the instance variable also named triggerNumber.
+ * 
  * @author Meredith Gregory
  */
-   // boolean triggerEarthquake(int triggerNumber){
-        
-    //}
+    boolean triggerEarthquake(){
+        boolean triggerEarthquake = this.getEarthquakeTriggers();
+        if(triggerEarthquake == false){
+            if(this.numMoves==this.triggerNum){
+                return true;
+            } 
+            else return false;
+        }
+        else 
+            return true;
+    }
     
     int getHealth(){
         return this.health;
@@ -258,13 +298,21 @@ public class GameState {
         this.score = newScore;
     }
     
+    // used in restore 
     void setHunger(int hunger){
-        this.hunger = hunger
+        this.hunger = hunger;
     }
-    
-    
+    //used to update hunger with every move
+    void updateHunger(int hunger){
+        this.hunger = this.hunger + hunger;
+    }
+    int getHunger(){
+        return this.hunger;
+    }
 
 }
+
+
 
 
 
