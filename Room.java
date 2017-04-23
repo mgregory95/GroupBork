@@ -1,6 +1,6 @@
 
-package zeitz_borkv3;
 
+package GroupBork;
 
 
 import java.util.ArrayList;
@@ -25,6 +25,8 @@ public class Room {
     private boolean beenHere;
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
+    private boolean isHidden;
+    private boolean isLocked;
 
     Room(String title) {
         init();
@@ -66,7 +68,18 @@ public class Room {
                     }
                 }
             } else {
-                desc += lineOfDesc + "\n";
+                if(lineOfDesc.startsWith("isHidden: ")){
+                    String isHidden = lineOfDesc.substring(10);
+                    setVisibility(isHidden);
+                }
+                else
+                    desc += lineOfDesc + "\n";
+                if(lineOfDesc.startsWith("isLocked: ")){
+                    String isLocked = lineOfDesc.substring(10);
+                    setLock(isLocked);
+                }
+                else 
+                    desc += lineOfDesc + "\n";
             }
             lineOfDesc = s.nextLine();
         }
@@ -78,29 +91,7 @@ public class Room {
         }
     }
 
-    //ANOTHER ROOM CONSTRUCTOR! GROUP BORK CONSTRUCTOR 
- /**
- * Room(Scanner s, Dungeon d, boolean initState, boolean isHidden, boolean isLocked).
- * This is the new room constructor that accounts for locked and hidden rooms. 
- * @author Meredith
- * @param d The dungeon object, necessary to retrieve Item objects.
-    @param initState should items listed for this room be added to it?
-    @param s  The scanner used to read through the provided file looking for 
-    room information. 
-    @param isHidden is the room the secret room or a room with normal visibility?
-    @param isLocked is the room locked and in need of a riddle to open it?
-    @throws NoRoomException The reader object is not positioned at the
-    start of a room entry. A side effect of this is the reader's cursor
-    is now positioned one line past where it was.
-    @throws IllegalDungeonFormatException A structural problem with the
-    dungeon file itself, detected when trying to read this room.
- * 
- */
-     Room(Scanner s, Dungeon d, boolean initState, boolean isHidden, boolean isLocked) throws NoRoomException, IllegalDungeonFormatException {
-     
-     }
-    
-    
+
     // Common object initialization tasks.
     private void init() {
         contents = new ArrayList<Item>();
@@ -219,6 +210,24 @@ public class Room {
  */
     void unlock(){
 
+    }
+    public void setBeenHere(boolean b){
+        this.beenHere = b;
+    }
+    
+    void clearExits(){
+        for(int i = 0; i<this.exits.size(); i++){
+            exits.remove(i);
+        }
+    }
+    void setVisibility(String isHidden){
+        
+        this.isHidden = Boolean.parseBoolean(isHidden);
+    }
+    void setLock(String isLocked){
+        this.isLocked = Boolean.parseBoolean(isLocked);
+    }
+            
 }
-}
+
 
