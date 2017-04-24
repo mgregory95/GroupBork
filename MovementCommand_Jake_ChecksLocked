@@ -18,7 +18,8 @@ class MovementCommand extends Command {
                 return "You can't go " + dir + ".\n";
             }
         } else{
-            return nextRoom.getRiddle();
+            return nextRoom.getRiddle() + "\n**To answer a riddle, begin the line with "
+                    + "'answer: ' and type in your answer**\n";
         }
     }
 }
