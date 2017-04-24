@@ -2,55 +2,44 @@ The Death Star
 Group Bork v3.0
 ===
 Items:
-BanthaBottle
-10
+BanthaBottle 10
 kick:The can skitters around.
 shake:A liquid fizzes menacingly inside the can.
 drink[Transform(emptyBottle),Wound(-5)]:Gulp, gulp -- that was GOOD!
 ---
-emptyBottle
-2
+emptyBottle 2
 kick:The empty bottle skitters around.
 drink:Sorry, all gone!
 stomp[Transform(crushedBottle)]:The Bottle crunches down into a thin disk, good for recycling.
 ---
-crushedBottle
-2
+crushedBottle 2
 throw:Zing!
 stomp:It has no effect as the can is already crushed.
 recycle[Score(10),Disappear]:Nice! Helped the environment.
 ---
-VaderFigure
-5
+VaderFigure 5
 ---
-YodaFigure
-5
+YodaFigure 5
 touch[Score(10)]:Yoda says, "Do, or do not! There is no try."
 break[Disappear]:Whoops!
 ---
-Yogurt
-2
+Yogurt 2
 eat[Wound(-5),Disappear]:Yummy!
 ---
-E11Blaster
-10
+E11Blaster 10
 fire:Pew pew!
 ---
-SpaceDonut
-7
+SpaceDonut 2
 eat[Wound(-5)]:You feel a little guilty, but it was delicious!
 ---
-CoffeeMug
-4
+CoffeeMug 4
 drink[Wound(-5),Transform(emptyMug)]:Refreshing!
 ---
-emptyMug
-2
+emptyMug 2
 drink:All gone!
 break[Disappear]:Whoopsie Daisy.. Ridley.
 ---
-KeysToFalcon
-2
+KeysToFalcon 2
 use[Win]:You rush back to the Falcon and unlock it and fly off into space!
 ===
 Rooms:
