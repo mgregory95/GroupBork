@@ -1,6 +1,7 @@
 
 package zeitz_borkv3;
 
+
 /**
  * Used to enter a locked exit if the command is the correct answer to the
  * riddle. This is another extension of the abstract command class. This
@@ -15,6 +16,7 @@ package zeitz_borkv3;
 class AnswerCommand extends Command{
     
     private String answer;
+    private ArrayList<String> answers;
     /**
      * This is the constructor method for the answer command when
      * prompted by the user. It takes in a String from the user to
@@ -36,6 +38,26 @@ class AnswerCommand extends Command{
      *                  gained access to the room.
      */
     String execute() {
-        //return message indicating right or wrong
+        
+        if(answer.equals("toyoda") || answer.equals("Toyoda")){
+            GameState gs = GameState.instance();
+            gs.getDungeon().getRoom("Vaders Command Room").unlock();
+            return "Correct!";
+        } else if(answer.equals("forks") || answer.equals("Forks")){
+            GameState gs = GameState.instance();
+            gs.getDungeon().getRoom("Conference Room").unlock();
+            return "You got it!";
+        } else if(answer.equals("sithy") || answer.equals("Sithy")){
+            GameState gs = GameState.instance();
+            gs.getDungeon().getRoom("Emperors Throne Room").unlock();
+            return "Well done!";
+        } else if(answer.equals("R2Detour") || answer.equals("r2detour")){
+            GameState gs = GameState.instance();
+            gs.getDungeon().getRoom("Super weapon Firing Room").unlock();
+            return "Nice!";
+        } else{
+            return "Not quite. Try again?";
+        }
+        
     }
 }
