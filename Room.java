@@ -1,5 +1,6 @@
 
 
+
 package GroupBork;
 
 
@@ -27,6 +28,7 @@ public class Room {
     private ArrayList<Exit> exits;
     private boolean isHidden;
     private boolean isLocked;
+    private String riddle;
 
     Room(String title) {
         init();
@@ -66,23 +68,31 @@ public class Room {
                         throw new Dungeon.IllegalDungeonFormatException(
                             "No such item '" + itemName + "'");
                     }
-                }
-            } else {
-                if(lineOfDesc.startsWith("isHidden: ")){
-                    String isHidden = lineOfDesc.substring(10);
-                    setVisibility(isHidden);
-                }
-                else
-                    desc += lineOfDesc + "\n";
-                if(lineOfDesc.startsWith("isLocked: ")){
-                    String isLocked = lineOfDesc.substring(10);
-                    setLock(isLocked);
-                }
-                else 
-                    desc += lineOfDesc + "\n";
+                } 
+                lineOfDesc = s.nextLine();
             }
+            if(lineOfDesc.startsWith("isHidden: ")){
+                String isHidden = lineOfDesc.substring(10);
+                 setVisibility(isHidden);
+                 lineOfDesc = s.nextLine();
+            }
+            if(lineOfDesc.startsWith("isLocked: ")){
+                String isLocked = lineOfDesc.substring(10);
+                setLock(isLocked);
+                lineOfDesc = s.nextLine();
+            }
+            if(this.isLocked == true){
+                if(lineOfDesc.startsWith("Riddle: ")){
+                    this.riddle = lineOfDesc.substring(8);
+                    lineOfDesc = s.nextLine();
+                }
+            }
+            else
+                desc += lineOfDesc + "\n";
+            }
+            desc += lineOfDesc + "\n";
             lineOfDesc = s.nextLine();
-        }
+        
 
         // throw away delimiter
         if (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM)) {
@@ -209,7 +219,7 @@ public class Room {
  * 
  */
     void unlock(){
-
+        this.isLocked = false;
     }
     public void setBeenHere(boolean b){
         this.beenHere = b;
@@ -226,6 +236,13 @@ public class Room {
     }
     void setLock(String isLocked){
         this.isLocked = Boolean.parseBoolean(isLocked);
+    }
+    boolean isLocked(){
+        return this.isLocked;
+    }
+    
+    String getRiddle(){
+        return this.riddle;
     }
             
 }
