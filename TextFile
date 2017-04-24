@@ -3,7 +3,7 @@ Group Bork v3.0
 ===
 Items:
 BanthaBottle 10
-kick:The can skitters around.
+kick:The bottle skitters around.
 shake:A liquid fizzes menacingly inside the can.
 drink[Transform(emptyBottle),Wound(-5)]:Gulp, gulp -- that was GOOD!
 ---
@@ -14,23 +14,24 @@ stomp[Transform(crushedBottle)]:The Bottle crunches down into a thin disk, good 
 ---
 crushedBottle 2
 throw:Zing!
-stomp:It has no effect as the can is already crushed.
+stomp:It has no effect as the bottle is already crushed.
 recycle[Score(10),Disappear]:Nice! Helped the environment.
 ---
 VaderFigure 5
+touch[Score(5)]:Vader says, “Impressive. Most impressive.”
 ---
 YodaFigure 5
 touch[Score(10)]:Yoda says, "Do, or do not! There is no try."
 break[Disappear]:Whoops!
 ---
 Yogurt 2
-eat[Wound(-5),Disappear]:Yummy!
+eat[Hunger(-5),Disappear]:Yummy!
 ---
 E11Blaster 10
 fire:Pew pew!
 ---
 SpaceDonut 2
-eat[Wound(-5)]:You feel a little guilty, but it was delicious!
+eat[Hunger(-5)]:You feel a little guilty, but it was delicious!
 ---
 CoffeeMug 4
 drink[Wound(-5),Transform(emptyMug)]:Refreshing!
@@ -521,3 +522,4 @@ Conference Room
 visibility=true
 ---
 ===
+
