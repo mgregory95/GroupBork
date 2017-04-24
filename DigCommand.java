@@ -1,34 +1,53 @@
 
-package zeitz_borkv3;
+package GroupBork;
+
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- * A brand new class that is only available after an Earthquake has happened.
- * If/when the adventurer experiences an earthquake, they are trapped in the
- * current room. All may seem lost, but if they are able to discover this
- * command, then they will be out and in the same dungeon in perfect condition
- * if they have enough health to do it.
- * 
- * @author Jake
+ *
+ * @author Meredith
  */
-class DigCommand extends Command{
-    /**
-     * This is the constructor method for the dig command when
-     * prompted by the user. It does not take in any parameters and
-     * does not return anything either.
-     */
-    DigCommand() {
+public class DigCommand extends Command{
+    private int digCount;
+    //constructor 
+    public DigCommand(int digCount){
+        this.digCount = digCount;
+    }
+    
+    String execute(){
+        GameState gs = GameState.instance();
+        int newHealth = gs.getHealth()- 10;
+        gs.setHealth(newHealth);
         
+        String returnString = "";
+        if(digCount==1){
+            returnString = "You have the right idea. Keep digging!";
+        }
+        if(digCount==2){
+            returnString = "Keep going! I hope your strong enough to get out.";
+        }
+        if(digCount == 3){
+            returnString = "Not out yet...";
+        }
+        if(digCount ==4){
+            returnString = "Almost there! Just a little further!";
+        }
+        if(digCount== 5){
+            try {
+                gs.restore(gs.DEFAULT_SAVE_FILE);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(DigCommand.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (GameState.IllegalSaveFormatException ex) {
+                Logger.getLogger(DigCommand.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Dungeon.IllegalDungeonFormatException ex) {
+                Logger.getLogger(DigCommand.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            returnString = "You are free! All is back to normal...expect your health that is...";
+        }
+        return returnString; 
+          
     }
-    /**
-     * Executes the action of the command by freeing the adventurer from
-     * the room after an earthquake.
-     * 
-     * @return String   a message saying that they had enough health and
-     *                  stamina to dig their way out and realizes that
-     *                  the earthquake was only in that room and the rest
-     *                  of the dungeon appears to be untouched.
-     */
-    String execute() {
-        //return current score
-    }
+    
 }

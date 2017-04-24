@@ -1,6 +1,4 @@
 
-
-
 package GroupBork;
 
 import GroupBork.Item.NoItemException;
@@ -37,13 +35,20 @@ public class Transform extends Event {
         try{
             GameState gs = GameState.instance();
             //activate new item
-            Item newItem = gs.getDungeon().getItem(itemName);
-            Room current = gs.getAdventurersCurrentRoom();
-            current.add(newItem);
-            //disappear the old item
-            Disappear d = new Disappear();
-            d.execute(s);
-            
+            if(gs.getInventoryNames().contains(s)){
+                Item newItem = gs.getDungeon().getItem(itemName);
+                gs.addToInventory(newItem);
+                //disappear the old item
+                Disappear d = new Disappear();
+                d.execute(s);
+            }else{
+                Item newItem = gs.getDungeon().getItem(itemName);
+                Room current = gs.getAdventurersCurrentRoom();
+                current.add(newItem);
+                //disappear the old item
+                Disappear d = new Disappear();
+                d.execute(s);
+            }
             
             
             

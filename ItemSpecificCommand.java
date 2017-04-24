@@ -19,22 +19,41 @@ class ItemSpecificCommand extends Command {
     public String execute() {
         try{
             GameState gs = GameState.instance();
-            Item i = gs.getItemInVicinityNamed(noun);
-            String message = i.getMessageForVerb(verb);
-            if(i.getEventFromVerb(verb)!= null){
-                String event = i.getEventFromVerb(verb);
-                if(event.contains(",")){
-                    String [] separateEvents = event.split(",");
-                    for(int j = 0; j< separateEvents.length; j++){
-                        if(i.getEventFromVerb(verb)!=null){
-                            System.out.println(EventFactory.instance().parse(separateEvents[j]).execute(noun));
+            if(gs.getInventoryNames().contains(noun)){
+                Item inventoryItem = gs.getItemFromInventoryNamed(noun);
+                String message = inventoryItem.getMessageForVerb(verb);
+                if(inventoryItem.getEventFromVerb(verb)!= null){
+                    String event = inventoryItem.getEventFromVerb(verb);
+                    if(event.contains(",")){
+                        String [] separateEvents = event.split(",");
+                        for(int j = 0; j< separateEvents.length; j++){
+                            if(inventoryItem.getEventFromVerb(verb)!=null){
+                                System.out.println(EventFactory.instance().parse(separateEvents[j]).execute(noun));
+                            }
                         }
                     }
+                    else
+                        System.out.println(EventFactory.instance().parse(event).execute(noun));
                 }
-                else
-                    System.out.println(EventFactory.instance().parse(event).execute(noun));
+                return message + "\n";
+            } else{
+                Item i = gs.getItemInVicinityNamed(noun);
+                String message = i.getMessageForVerb(verb);
+                if(i.getEventFromVerb(verb)!= null){
+                    String event = i.getEventFromVerb(verb);
+                    if(event.contains(",")){
+                        String [] separateEvents = event.split(",");
+                        for(int j = 0; j< separateEvents.length; j++){
+                            if(i.getEventFromVerb(verb)!=null){
+                                System.out.println(EventFactory.instance().parse(separateEvents[j]).execute(noun));
+                            }
+                        }
+                    }
+                    else
+                        System.out.println(EventFactory.instance().parse(event).execute(noun));
+                }
+                return message + "\n";
             }
-            return message + "\n";
         } catch (NullPointerException e){
             return("Sorry, you can't " + verb + " the " + noun + ".\n");
         } catch (Item.NoItemException e) {
@@ -45,5 +64,3 @@ class ItemSpecificCommand extends Command {
     }
     
 }
-
-

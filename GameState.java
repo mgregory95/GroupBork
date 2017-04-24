@@ -1,6 +1,4 @@
 
-
-
 package GroupBork;
 
 
@@ -220,6 +218,7 @@ public class GameState {
  * 
  */
     void earthquake(){
+        new SaveCommand();
         this.adventurersCurrentRoom.clearExits();
         System.out.println("An earthquake rocks your world. You are now stuck in this room. Your future looks dim.");
     }
@@ -311,17 +310,4 @@ public class GameState {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 

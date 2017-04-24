@@ -20,10 +20,17 @@ class MovementCommand extends Command {
         Room currentRoom = gs.getAdventurersCurrentRoom();
         Room nextRoom = currentRoom.leaveBy(dir);
         if (nextRoom != null) {  // could try/catch here.
-            gs.setAdventurersCurrentRoom(nextRoom);
-            return "\n" + nextRoom.describe() + "\n";
+            if(!nextRoom.isLocked()){
+                gs.setAdventurersCurrentRoom(nextRoom);
+                return "\n" + nextRoom.describe() + "\n";
+            } else {
+                return "This room is locked! Answer this riddle to unlock it.\n" 
+                        + nextRoom.getRiddle() + "\n**To answer a riddle, begin the line with "
+                        + "'answer: ' and type in your answer**\n";
+            }
         } else {
             return "You can't go " + dir + ".\n";
         }
+    
     }
 }

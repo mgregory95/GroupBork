@@ -1,6 +1,4 @@
 
-
-
 package GroupBork;
 
 import java.util.Random;
@@ -86,4 +84,3 @@ public class Interpreter {
 
 
 }
-

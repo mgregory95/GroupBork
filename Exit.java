@@ -1,5 +1,4 @@
 
-
 package GroupBork;
 
 
@@ -56,10 +55,20 @@ public class Exit {
     }
 
     String describe() {
-        if(this.getVisibility()==true)
-            return "You can go " + dir + " to " + dest.getTitle() + ".";
-        else
-            return "";
+        
+        String title = dest.getTitle();
+        if(!title.contains("1")&& !title.contains("2") && !title.contains("3")&& !title.contains("4")&& !title.contains("5")&& !title.contains("6")&& !title.contains("7")&& !title.contains("8")&& !title.contains("9")&& !title.contains("0")){
+            if(this.getVisibility()==true)
+                return "You can go " + dir + " to " + dest.getTitle() + ".";
+            else
+                return "";
+        }else{
+            String printedTitle = title.substring(0, title.length()-1);
+            if(this.getVisibility()==true)
+                return "You can go " +dir + " to " + printedTitle + ".";
+            else
+                return "";
+        }
     }
 
     String getDir() { return dir; }
@@ -79,5 +88,3 @@ public class Exit {
         return this.visibility;
     }
 }
-
-

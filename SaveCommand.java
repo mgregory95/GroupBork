@@ -1,9 +1,13 @@
-
-package zeitz_borkv3;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package GroupBork;
 
 class SaveCommand extends Command {
 
-    private static String DEFAULT_SAVE_FILENAME = "bork";
+    private static String DEFAULT_SAVE_FILENAME = "Zork";
 
     private String saveFilename;
 
@@ -13,6 +17,11 @@ class SaveCommand extends Command {
         } else {
             this.saveFilename = saveFilename;
         }
+    }
+    
+    //constructor for earthquake force save
+    SaveCommand(){
+        this.saveFilename = DEFAULT_SAVE_FILENAME;
     }
 
     public String execute() {

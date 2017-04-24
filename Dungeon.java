@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -93,7 +92,7 @@ public class Dungeon {
 
         try {
             // Instantiate and add first room (the entry).
-            entry = new Room(s, this, initState);
+            entry = new Room(s, this);
             add(entry);
 
             // Instantiate and add other rooms.
@@ -185,4 +184,3 @@ public class Dungeon {
         return this.rooms;
     }
 }
-

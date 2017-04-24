@@ -6,8 +6,8 @@
 package GroupBork;
 
 
-abstract class Command {
-
-    abstract String execute();
-
+public class IllegalSaveFormatException extends Exception {
+    public IllegalSaveFormatException(String errorMessage){
+        System.out.println(errorMessage);
+    }
 }

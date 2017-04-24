@@ -1,6 +1,4 @@
 
-
-
 package GroupBork;
 /**
  * This class keeps track of the adventurers score and will add or subtract

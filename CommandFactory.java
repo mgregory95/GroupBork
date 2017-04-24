@@ -1,10 +1,15 @@
-package zeitz_borkv3;
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package GroupBork;
 import java.util.List;
 import java.util.Arrays;
 
 public class CommandFactory {
 
+    private int digCount;
     private static CommandFactory theInstance;
     public static List<String> MOVEMENT_COMMANDS = 
         Arrays.asList("n","w","e","s","u","d" );
@@ -25,27 +30,25 @@ public class CommandFactory {
         String noun = parts.length >= 2 ? parts[1] : "";
         if (verb.equals("save")) {
             return new SaveCommand(noun);
-        }
-        if (verb.equals("take")) {
+        }else if (verb.equals("take")) {
             return new TakeCommand(noun);
-        }
-        if (verb.equals("drop")) {
+        }else if (verb.equals("drop")) {
             return new DropCommand(noun);
-        }
-        if (verb.equals("i") || verb.equals("inventory")) {
+        }else if (verb.equals("i") || verb.equals("inventory")) {
             return new InventoryCommand();
-        }
-        if (MOVEMENT_COMMANDS.contains(verb)) {
+        }else if (MOVEMENT_COMMANDS.contains(verb)) {
             return new MovementCommand(verb);
-        }
-        if (parts.length == 2) {
+        }else if (verb.equals("answer:")){
+            return new AnswerCommand(noun);
+        }else if (parts.length == 2) {
             return new ItemSpecificCommand(verb, noun);
-        }
-        if (verb.equals("score")){
+        }else if (verb.equals("score")){
             return new ScoreCommand();
-        }
-        if(verb.equals("health")){
+        }else if(verb.equals("health")){
             return new HealthCommand();
+        }else if (verb.equals("dig")){
+            digCount++;
+            return new DigCommand(digCount);
         }
         return new UnknownCommand(command);
     }

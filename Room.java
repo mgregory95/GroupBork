@@ -1,6 +1,4 @@
 
-
-
 package GroupBork;
 
 
@@ -89,9 +87,9 @@ public class Room {
             }
             else
                 desc += lineOfDesc + "\n";
-            }
-            desc += lineOfDesc + "\n";
-            lineOfDesc = s.nextLine();
+                lineOfDesc = s.nextLine();
+            
+        }
         
 
         // throw away delimiter
@@ -157,17 +155,17 @@ public class Room {
 
     public String describe() {
         String description;
-        if(!title.contains("1")|| title.contains("2") || title.contains("3")|| title.contains("4")|| title.contains("5")|| title.contains("6")|| title.contains("7")|| title.contains("8")|| title.contains("9")|| title.contains("0")){ 
+        if(!title.contains("1")&& !title.contains("2") && !title.contains("3")&& !title.contains("4")&& !title.contains("5")&& !title.contains("6")&& !title.contains("7")&& !title.contains("8")&& !title.contains("9")&& !title.contains("0")){
            if (beenHere) {
             description = title;
            }  else {
                description = title + "\n" + desc;
             } 
         } else {
-            String printedTitle = title.substring(title.length()-2, title.length());
+            String printedTitle = title.substring(0, title.length()-1);
             if (beenHere) {
             description = printedTitle;
-           }  else {
+            } else {
                description = printedTitle + "\n" + desc;
             } 
             
@@ -257,5 +255,3 @@ public class Room {
     }
             
 }
-
-

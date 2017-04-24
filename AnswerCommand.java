@@ -1,6 +1,5 @@
 
-package zeitz_borkv3;
-
+package GroupBork;
 
 /**
  * Used to enter a locked exit if the command is the correct answer to the
@@ -42,21 +41,21 @@ class AnswerCommand extends Command{
         if(answer.equals("toyoda") || answer.equals("Toyoda")){
             GameState gs = GameState.instance();
             gs.getDungeon().getRoom("Vaders Command Room").unlock();
-            return "Correct!";
+            return "Correct!\n";
         } else if(answer.equals("forks") || answer.equals("Forks")){
             GameState gs = GameState.instance();
             gs.getDungeon().getRoom("Conference Room").unlock();
-            return "You got it!";
+            return "You got it!\n";
         } else if(answer.equals("sithy") || answer.equals("Sithy")){
             GameState gs = GameState.instance();
             gs.getDungeon().getRoom("Emperors Throne Room").unlock();
-            return "Well done!";
+            return "Well done!\n";
         } else if(answer.equals("R2Detour") || answer.equals("r2detour")){
             GameState gs = GameState.instance();
             gs.getDungeon().getRoom("Super weapon Firing Room").unlock();
-            return "Nice!";
+            return "Nice!\n";
         } else{
-            return "Not quite. Try again?";
+            return "Not quite. Try again?\n";
         }
         
     }
