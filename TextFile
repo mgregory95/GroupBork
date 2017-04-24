@@ -25,13 +25,13 @@ touch[Score(10)]:Yoda says, "Do, or do not! There is no try."
 break[Disappear]:Whoops!
 ---
 Yogurt 2
-eat[Hunger(-5),Disappear]:Yummy!
+eat[Hunger(5),Disappear]:Yummy!
 ---
 E11Blaster 10
 fire:Pew pew!
 ---
 SpaceDonut 2
-eat[Hunger(-5)]:You feel a little guilty, but it was delicious!
+eat[Hunger(5)]:You feel a little guilty, but it was delicious!
 ---
 CoffeeMug 4
 drink[Wound(-5),Transform(emptyMug)]:Refreshing!
