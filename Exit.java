@@ -1,5 +1,6 @@
 
-package zeitz_borkv3;
+
+package GroupBork;
 
 
 import java.util.Scanner;
@@ -14,6 +15,7 @@ public class Exit {
 
     private String dir;
     private Room src, dest;
+    private boolean visibility;
 
     Exit(String dir, Room src, Room dest) {
         init();
@@ -35,6 +37,7 @@ public class Exit {
         src = d.getRoom(srcTitle);
         dir = s.nextLine();
         dest = d.getRoom(s.nextLine());
+        this.visibility = Boolean.parseBoolean(s.nextLine().substring(11));
         
         // I'm an Exit object. Great. Add me as an exit to my source Room too,
         // though.
@@ -47,34 +50,16 @@ public class Exit {
         }
     }
     
-    
-    //Another Exit Constructor     GROUP BORK
-    
-    /** Given a Scanner object positioned at the beginning of an "exit" file
-        entry, read and return an Exit object representing it. 
-        @param d The dungeon that contains this exit (so that Room objects 
-        may be obtained.)
-        * @param s The scanner object that will read through the file. 
-        * @param visibility  this boolean allows the program to know is the exit
-        * is hidden or not. The only place this will be true is for the 
-        * hidden exit of which there will only be two. Every other exit will 
-        * have a negative value for this boolean. 
-        @throws NoExitException The reader object is not positioned at the
-        start of an exit entry. A side effect of this is the reader's cursor
-        is now positioned one line past where it was.
-        @throws IllegalDungeonFormatException A structural problem with the
-        dungeon file itself, detected when trying to read this room.
-     */
-    Exit(Scanner s, Dungeon d, boolean visibility) throws NoExitException, IllegalDungeonFormatException {
-        
-    }
 
     // Common object initialization tasks.
     private void init() {
     }
 
     String describe() {
-        return "You can go " + dir + " to " + dest.getTitle() + ".";
+        if(this.getVisibility()==true)
+            return "You can go " + dir + " to " + dest.getTitle() + ".";
+        else
+            return "";
     }
 
     String getDir() { return dir; }
@@ -91,7 +76,8 @@ public class Exit {
  * 
  */
     boolean getVisibility(){
-        
+        return this.visibility;
     }
 }
+
 
