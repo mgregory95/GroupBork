@@ -16,7 +16,7 @@ package zeitz_borkv3;
 class AnswerCommand extends Command{
     
     private String answer;
-    private ArrayList<String> answers;
+    
     /**
      * This is the constructor method for the answer command when
      * prompted by the user. It takes in a String from the user to
