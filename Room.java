@@ -157,11 +157,22 @@ public class Room {
 
     public String describe() {
         String description;
-        if (beenHere) {
+        if(!title.contains("1")|| title.contains("2") || title.contains("3")|| title.contains("4")|| title.contains("5")|| title.contains("6")|| title.contains("7")|| title.contains("8")|| title.contains("9")|| title.contains("0")){ 
+           if (beenHere) {
             description = title;
+           }  else {
+               description = title + "\n" + desc;
+            } 
         } else {
-            description = title + "\n" + desc;
+            String printedTitle = title.substring(title.length()-2, title.length());
+            if (beenHere) {
+            description = printedTitle;
+           }  else {
+               description = printedTitle + "\n" + desc;
+            } 
+            
         }
+        
         for (Item item : contents) {
             description += "\nThere is a " + item.getPrimaryName() + " here.";
         }
