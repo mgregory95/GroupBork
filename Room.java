@@ -118,6 +118,7 @@ public class Room {
     void storeState(PrintWriter w) throws IOException {
         w.println(title + ":");
         w.println("beenHere=" + beenHere);
+        w.println("isLocked=" + isLocked);
         if (contents.size() > 0) {
             w.print(CONTENTS_STARTER);
             for (int i=0; i<contents.size()-1; i++) {
@@ -138,7 +139,14 @@ public class Room {
         beenHere = Boolean.valueOf(line.substring(line.indexOf("=")+1));
 
         line = s.nextLine();
+        if (!line.startsWith("isLocked")) {
+            throw new GameState.IllegalSaveFormatException("No isLocked.");
+        }
+        isLocked=Boolean.valueOf(line.substring(line.indexOf("=")+1));
+        
+        line = s.nextLine();
         if (line.startsWith(CONTENTS_STARTER)) {
+            this.getContents().clear();
             String itemsList = line.substring(CONTENTS_STARTER.length());
             String[] itemNames = itemsList.split(",");
             for (String itemName : itemNames) {
@@ -235,9 +243,8 @@ public class Room {
     }
     
     void clearExits(){
-        for(int i = 0; i<this.exits.size(); i++){
-            exits.remove(i);
-        }
+        exits.clear();
+        
     }
     void setVisibility(String isHidden){
         

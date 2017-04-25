@@ -89,13 +89,16 @@ public class GameState {
         if (s.hasNext()) {
             String inventoryList = s.nextLine().substring(
                 INVENTORY_LEADER.length());
-            String[] inventoryItems = inventoryList.split(",");
-            for (String itemName : inventoryItems) {
-                try {
-                    addToInventory(dungeon.getItem(itemName));
-                } catch (Item.NoItemException e) {
-                    throw new IllegalSaveFormatException("No such item '" +
-                        itemName + "'");
+            if(!inventoryList.isEmpty()){
+                String[] inventoryItems = inventoryList.split(",");
+                GameState.instance().getInventory().clear();
+                for (String itemName : inventoryItems) {
+                    try {
+                        addToInventory(dungeon.getItem(itemName));
+                    } catch (Item.NoItemException e) {
+                        throw new IllegalSaveFormatException("No such item '" +
+                            itemName + "'");
+                    }
                 }
             }
         }
@@ -132,12 +135,14 @@ public class GameState {
         dungeon.storeState(w);
         w.println(ADVENTURER_MARKER);
         w.println(CURRENT_ROOM_LEADER + adventurersCurrentRoom.getTitle());
+        w.print(INVENTORY_LEADER);
         if (inventory.size() > 0) {
-            w.print(INVENTORY_LEADER);
             for (int i=0; i<inventory.size()-1; i++) {
                 w.print(inventory.get(i).getPrimaryName() + ",");
             }
             w.println(inventory.get(inventory.size()-1).getPrimaryName());  
+        }else{
+            w.print("\n");
         }
         w.println(SCORE_LEADER + this.score);
         w.println(HEALTH_LEADER + this.health);
@@ -218,9 +223,10 @@ public class GameState {
  * 
  */
     void earthquake(){
-        new SaveCommand();
+        new SaveCommand().execute();
         this.adventurersCurrentRoom.clearExits();
-        System.out.println("An earthquake rocks your world. You are now stuck in this room. Your future looks dim.");
+        System.out.println("The Death Star is under attack by the rebel alliance!!! The room shakes \n"
+                + "violently and the exits are blocked by debris. Your future looks dim... ");
     }
     
  /**
@@ -246,7 +252,7 @@ public class GameState {
     
     private void createRanTriggerNum(){
          Random rand = new Random();
-         this.triggerNum = rand.nextInt(75) + 15;
+         this.triggerNum = rand.nextInt(100) + 20;
   
     }
     void setTriggerNum(int triggerNum){
@@ -308,6 +314,10 @@ public class GameState {
     int getHunger(){
         return this.hunger;
     }
+    ArrayList<Item> getInventory(){
+        return this.inventory;
+    }
+    
 
 }
 

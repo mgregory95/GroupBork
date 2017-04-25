@@ -51,8 +51,11 @@ public class Interpreter {
 
             while (!command.equals("q")) {
                 if(state.triggerEarthquake()==false){
-                    if(state.getHealth()!=0 && state.getWinStatus()==false){
-                    
+                    if(state.getHealth()!=0 && state.getWinStatus()==false && state.getHunger()!=0){
+                        if(state.getHunger()%10==0){
+                            Hunger h = new Hunger(0);
+                            System.out.println(h.getHungerMessage(state.getHunger()));
+                        }
                         System.out.print(
                         CommandFactory.instance().parse(command).execute());
 
@@ -64,6 +67,11 @@ public class Interpreter {
                 }
                 else{
                     state.earthquake();
+                    System.out.print(
+                        CommandFactory.instance().parse(command).execute());
+
+                        command = promptUser(commandLine);
+                        
                 }    
             }
 

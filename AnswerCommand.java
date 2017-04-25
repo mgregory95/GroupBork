@@ -41,19 +41,19 @@ class AnswerCommand extends Command{
         if(answer.equals("toyoda") || answer.equals("Toyoda")){
             GameState gs = GameState.instance();
             gs.getDungeon().getRoom("Vaders Command Room").unlock();
-            return "Correct!\n";
+            return "Correct! You can now enter this room.\n";
         } else if(answer.equals("forks") || answer.equals("Forks")){
             GameState gs = GameState.instance();
             gs.getDungeon().getRoom("Conference Room").unlock();
-            return "You got it!\n";
+            return "You got it! You can now enter this room.\n";
         } else if(answer.equals("sithy") || answer.equals("Sithy")){
             GameState gs = GameState.instance();
             gs.getDungeon().getRoom("Emperors Throne Room").unlock();
-            return "Well done!\n";
+            return "Well done! You can now enter this room.\n";
         } else if(answer.equals("R2Detour") || answer.equals("r2detour")){
             GameState gs = GameState.instance();
             gs.getDungeon().getRoom("Super weapon Firing Room").unlock();
-            return "Nice!\n";
+            return "Nice! You can now enter this room.\n";
         } else{
             return "Not quite. Try again?\n";
         }

@@ -21,9 +21,9 @@ class SaveCommand extends Command {
     
     //constructor for earthquake force save
     SaveCommand(){
-        this.saveFilename = DEFAULT_SAVE_FILENAME;
+        this.saveFilename = "earthquakeSave";
     }
-
+ 
     public String execute() {
         try {
             GameState.instance().store(saveFilename);

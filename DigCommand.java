@@ -20,31 +20,31 @@ public class DigCommand extends Command{
         GameState gs = GameState.instance();
         int newHealth = gs.getHealth()- 10;
         gs.setHealth(newHealth);
+        String filename = "earthquakeSave";
         
         String returnString = "";
         if(digCount==1){
-            returnString = "You have the right idea. Keep digging!";
+            returnString = "You have the right idea. Keep digging!\n";
         }
         if(digCount==2){
-            returnString = "Keep going! I hope your strong enough to get out.";
+            returnString = "Keep going! I hope your strong enough to get out.\n";
         }
         if(digCount == 3){
-            returnString = "Not out yet...";
+            returnString = "Not out yet...\n";
         }
         if(digCount ==4){
-            returnString = "Almost there! Just a little further!";
+            returnString = "Almost there! Just a little further!\n";
         }
         if(digCount== 5){
-            try {
-                gs.restore(gs.DEFAULT_SAVE_FILE);
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(DigCommand.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (GameState.IllegalSaveFormatException ex) {
-                Logger.getLogger(DigCommand.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Dungeon.IllegalDungeonFormatException ex) {
-                Logger.getLogger(DigCommand.class.getName()).log(Level.SEVERE, null, ex);
+            try{
+                int health = gs.getHealth();
+                gs.restore(filename + ".sav");
+                gs.setHealth(health);
+                gs.updateNumMoves(1);
+                returnString = "You cleared the exits and the rebels have fallen back! All is back to normal...except your health that is...\n";
+            } catch(Exception e) { 
+            e.printStackTrace(); 
             }
-            returnString = "You are free! All is back to normal...expect your health that is...";
         }
         return returnString; 
           

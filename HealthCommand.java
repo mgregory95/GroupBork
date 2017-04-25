@@ -33,25 +33,25 @@ class HealthCommand extends Command{
             healthReturn =  "You are close to death.\n";
         }
         else if(health > 10 && health <=20){
-            healthReturn = "You do not feel good at all and need to eat very soon.\n";
+            healthReturn = "You do not feel good at all and need to drink very soon.\n";
         }
         else if(health > 20 && health <=30){
             healthReturn = "You feel very light-headed.\n";
         }
         else if(health > 30 && health <=40){
-            healthReturn = "Your stomach grumbles violently.\n";
+            healthReturn = "You feel very fatigued.\n";
         }
         else if(health > 40 && health <=50){
-            healthReturn = "You are starting to feel a bit fatigued.\n";
+            healthReturn = "You are functioning at about 50%.\n";
         }
         else if(health > 50 && health <=60){
-            healthReturn = "Your stomach grumbles lightly.\n";
+            healthReturn = "Your mouth is getting dry.\n";
         }
         else if(health > 60 && health <=70){
             healthReturn = "A little short of breath, but you are alright";
         }
         else if(health > 70 && health <=80){
-            healthReturn = "You feel good and could eat something, but not in a hurry.\n";
+            healthReturn = "You feel good and could use a drink, but not in a hurry.\n";
         }
         else if(health > 80 && health <=90){
             healthReturn = "You feel good and comfortable.\n";
