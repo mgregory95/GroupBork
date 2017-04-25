@@ -2,6 +2,40 @@ The Death Star
 Group Bork v3.0
 ===
 Items:
+SpaceWaffle
+10
+eat[Wound(-10),Disappear]:Yum!!!
+---
+DroidHead
+15
+kick[Wound(15)]:OUCH! Why did you think that would be a good idea??
+---
+MiniDeathStarFigure
+10
+kick[Wound(10)]:You kick the figure, but it is much heavier than you thought! That hurts!
+---
+RubberBandBall
+2
+bounce:The ball bounces all over the room and back to your hand!
+throw:The ball bounces all over the room and back to your hand!
+---
+ATATBluePrints
+2
+read[Score(10)]:All of the details of how the infamous walker is designed is laid out on this sheet! Excellent intel for the rebellion!
+---
+ConfiscatedJediLightsaber
+10
+switch[Wound(15)]:Ouch! The saber turns on quicker than you expected and it burns your arm! You turn it right back off before you hurt yourself more.
+---
+Book
+5
+read:The Force For Dummies — This Hopeless Rebellion Only Whines. Master Everything.
+throw[Transform(secretNote)]:You throw the book across the room and when it hits the wall, a note falls out! The book has vanished.
+---
+secretNote
+2
+read:Its the Emperors To-do list! The only thing on here that isn’t crossed out is “Wall downstairs must be reinforced!!” Why would that be so important?
+---
 BanthaBottle
 10
 kick:The bottle skitters around.
@@ -47,7 +81,7 @@ drink[Wound(-5),Transform(emptyMug)]:Refreshing!
 ---
 emptyMug
 2
-drink:All gone!
+drink:Sorry, all gone!
 break[Disappear]:Whoopsie Daisy.. Ridley.
 ---
 KeysToFalcon
@@ -83,7 +117,7 @@ isLocked: false
 You are at the end of a main hallway.
 ---
 Tie Bomber Hangar
-Contents: SpaceDonut,YodaFigure,VaderFigure
+Contents: SpaceDonut,YodaFigure
 isHidden: false
 isLocked: false
 You are in a larger hangar filled with Tie Bombers.
@@ -95,7 +129,7 @@ isLocked: false
 You are in a large factory-looking room filled with various large machines. There are blasters that look like new along the walls, but many in large bins that appear to be in need of repair.
 ---
 Conference Room
-Contents: CoffeeMug
+Contents: CoffeeMug,VaderFigure
 isHidden: false
 isLocked: true
 Riddle: When Luke wanted to use chopsticks, ObiWan stopped him and told him to use the..
@@ -122,6 +156,7 @@ isLocked: false
 You are at the end of a back hallway. It extends south and then turns to the west. There are doors to the east and the north.
 ---
 Super weapon Firing Room
+Contents: MiniDeathStarFigure,RubberBandBall
 isHidden: false
 isLocked: true
 Riddle: What do you need to reroute a droid?
@@ -148,17 +183,20 @@ isLocked: false
 You are at the end of a hallway. There is a door to the north and south and the hallway continues east.
 ---
 Vaders Command Room
+Contents: ConfiscatedJediLightsaber,ATATBluePrints
 isHidden: false
 isLocked: true
 Riddle: What is a stormtroopers LEAST favorite car brand?
 Well now you’ve done it. You are in the Sith Lords command room. It appears he is off on more important business, but stay alert.
 ---
 Droid Maintenance
+Contents: DroidHead
 isHidden: false
 isLocked: false
 You are in a very large room filled with pieces of droids. There is a strong smell of oil and lots of broken blasters scattered on the floor.
 ---
 Tractor Beam Generator Room
+Contents: SpaceWaffle
 isHidden: false
 isLocked: false
 There is a large machine in this room and it is humming loudly.
@@ -174,10 +212,11 @@ isLocked: false
 You are in the detention block. It appears a fight happened here somewhat recently because  there are blaster marks all over the place. There is a hole in a vent that appears to have been blasted open leading down somewhere.
 ---
 Emperors Throne Room
+Contents: Book
 isHidden: false
 isLocked: true
 Riddle: What do you call a Sith who won’t fight?
-The Emperors Quarters. Where he schemes and kills and plans what he will do next to end the rebellion. You can feel the darkness surrounding you and would very much like to leave.. but you’re just too curious. You have a feeling there is something here that will help you escape with your life.
+The Emperors Quarters. Where he schemes and kills and plans what he will do next to end the rebellion. There is a massive bookshelf along the wall next to you and one is slightly ajar. You can feel the darkness surrounding you and would very much like to leave.. but you’re just too curious. You have a feeling there is something here that will help you escape with your life.
 ---
 Trash Compactor
 isHidden: false
@@ -219,35 +258,35 @@ The wall was in such bad shape you decide to run at it and boom! Well now it mak
 Exits:
 Tie Fighter Hangar
 e
-Main Hall1
+Main Hallway1
 visibility=true
 ---
-Main Hall1
+Main Hallway1
 w
 Tie Fighter Hangar
 visibility=true
 ---
-Main Hall1
+Main Hallway1
 n
 Control Room
 visibility=true
 ---
 Control Room
 s
-Main Hall1
+Main Hallway1
 visibility=true
 ---
-Main Hall1
+Main Hallway1
 s
-Main Hall2
+Main Hallway2
 visibility=true
 ---
-Main Hall2
+Main Hallway2
 n
-Main Hall1
+Main Hallway1
 visibility=true
 ---
-Main Hall2
+Main Hallway2
 s
 Main Hall3
 visibility=true
