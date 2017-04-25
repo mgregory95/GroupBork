@@ -288,52 +288,52 @@ visibility=true
 ---
 Main Hallway2
 s
-Main Hall3
+Main Hallway3
 visibility=true
 ---
-Main Hall3
+Main Hallway3
 n
-Main Hall2
+Main Hallway2
 visibility=true
 ---
-Main Hall3
+Main Hallway3
 w
 Tie Bomber Hangar
 visibility=true
 ---
 Tie Bomber Hangar
 e
-Main Hall3
+Main Hallway3
 visibility=true
 ---
-Main Hall3
+Main Hallway3
 e
-Main Hall4
+Main Hallway4
 visibility=true
 ---
-Main Hall4
+Main Hallway4
 w
-Main Hall3
+Main Hallway3
 visibility=true
 ---
-Main Hall4
+Main Hallway4
 s
 Weapon Factory
 visibility=true
 ---
 Weapon Factory
 n
-Main Hall4
+Main Hallway4
 visibility=true
 ---
-Main Hall4
+Main Hallway4
 e
 Conference Room
 visibility=true
 ---
 Conference Room
 w
-Main Hall4
+Main Hallway4
 visibility=true
 ---
 Conference Room
